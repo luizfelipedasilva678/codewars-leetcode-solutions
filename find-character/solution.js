@@ -23,5 +23,3 @@ function findCharacters(matrix) {
 
   return sortedLetters.sort().join("") + sortedNumbers.sort().join("");
 }
-
-console.log(findCharacters(matrix));
