@@ -6,8 +6,6 @@ function spiralize(size) {
   let colIndex = 0;
   let value = 1;
 
-  console.log(middleIndex);
-
   while (matrix.flat().length !== size * size) {
     if (
       colIndex === rowIndex &&
