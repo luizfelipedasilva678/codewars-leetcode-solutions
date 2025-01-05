@@ -8,5 +8,3 @@ function disemvowel(str) {
 
   return str.replace(pattern, "");
 }
-
-console.log(disemvowel("This website is for losers LOL!"));
