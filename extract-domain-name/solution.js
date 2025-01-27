@@ -17,5 +17,3 @@ function domainName(url) {
     }
   } while (execArray);
 }
-
-console.log(domainName("www.xakep.ru"));
