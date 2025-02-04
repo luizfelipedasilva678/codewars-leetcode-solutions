@@ -9,15 +9,11 @@ function sumPairs(ints, s) {
   const d = new Map();
 
   for (const [idx, int] of ints.entries()) {
-    if (pairs.has(idx)) continue;
-
     const diff = s - int;
 
-    if (!d.has(diff)) {
-      d.set(diff);
-    } else {
-      continue;
-    }
+    if (pairs.has(idx) || d.has(diff)) continue;
+
+    d.set(diff);
 
     const pairIdx = ints.findIndex(
       (v, pairIdx) => v === diff && idx !== pairIdx
