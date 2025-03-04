@@ -2,22 +2,14 @@
  * @param {number[]} numbers
  * @return {number}
  */
-function rob(numbers, memo = new Map()) {
-  const key = numbers.join(",");
-  if (memo.has(key)) return memo.get(key);
-  if (numbers.length === 1) return numbers[0];
-  if (numbers.length === 0) return 0;
+function rob(numbers) {
+  const table = Array(numbers.length + 1);
+  table.fill(0);
+  table[1] = numbers[0];
 
-  let maxAmount = 0;
-  for (const [numIdx, num] of numbers.entries()) {
-    const noAdjacentNumbers = numbers.filter(
-      (_, idx) => idx !== numIdx + 1 && idx !== numIdx - 1 && numIdx !== idx
-    );
-
-    const amount = rob(noAdjacentNumbers, memo) + num;
-    maxAmount = Math.max(maxAmount, amount);
+  for (let i = 2; i <= numbers.length; i++) {
+    table[i] = Math.max(table[i - 1], table[i - 2] + numbers[i - 1]);
   }
 
-  memo.set(key, maxAmount);
-  return maxAmount;
+  return table[numbers.length];
 }
