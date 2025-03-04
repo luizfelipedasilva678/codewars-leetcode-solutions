@@ -1,15 +1,19 @@
 /**
- * @param {number[]} numbers
- * @return {number}
+ * @param {number} numRows
+ * @return {number[][]}
  */
-function rob(numbers) {
-  const table = Array(numbers.length + 1);
-  table.fill(0);
-  table[1] = numbers[0];
+function getRow(rowIndex) {
+  const table = Array(rowIndex + 1)
+    .fill()
+    .map(() => Array());
+  table[0] = [1];
 
-  for (let i = 2; i <= numbers.length; i++) {
-    table[i] = Math.max(table[i - 1], table[i - 2] + numbers[i - 1]);
+  for (let i = 1; i <= rowIndex; i++) {
+    for (let j = 0; j < i + 1; j++) {
+      table[i][j] = (table[i - 1][j - 1] ?? 0) + (table[i - 1][j] ?? 0);
+    }
   }
 
-  return table[numbers.length];
+  return table[rowIndex];
 }
+console.log(getRow(3));
