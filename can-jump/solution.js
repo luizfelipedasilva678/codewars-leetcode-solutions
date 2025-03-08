@@ -7,10 +7,10 @@ function canJump(nums, idx = 0, memo = new Map()) {
   if (idx >= nums.length - 1) return true;
 
   for (let i = 1; i <= nums[idx]; i++) {
-    if (canJump(nums, idx + i, memo)) {
-      memo.set(idx, true);
-      return true;
-    }
+    const result = canJump(nums, idx + i, memo);
+    memo.set(idx, result);
+
+    if (result) return true;
   }
 
   memo.set(idx, false);
