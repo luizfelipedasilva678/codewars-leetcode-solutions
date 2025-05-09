@@ -1,9 +1,21 @@
+/**
+ *
+ * @param {number[]} numbers
+ * @param {number} target
+ * @returns
+ */
 function twoSum(numbers, target) {
-  for (let i = 0; i < numbers.length; i++) {
-    for (let j = i + 1; j < numbers.length; j++) {
-      if (numbers[i] + numbers[j] === target) {
-        return [i, j];
-      }
+  const map = new Map();
+
+  for (const [index, num] of numbers.entries()) {
+    const sum = target - num;
+
+    if (map.has(sum)) {
+      return [map.get(sum), index];
     }
+
+    map.set(num, index);
   }
 }
+
+console.log(twoSum([-3, 4, 3, 90], 0));
