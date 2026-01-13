@@ -12,9 +12,11 @@
 const reverseList = function (head, currentNode = new ListNode()) {
   if (!head) return null;
 
+  console.log("Before call", head, currentNode);
   const node = new ListNode();
   const newHead = reverseList(head.next, node);
   currentNode.val = head.val;
+  console.log("After call", head, currentNode);
 
   if (newHead) {
     if (!newHead.next) {
@@ -37,7 +39,7 @@ function ListNode(val, next) {
 let head = new ListNode();
 let curr = head;
 
-for (let i = 1; i <= 5; i++) {
+for (let i = 1; i <= 2; i++) {
   const node = new ListNode();
 
   curr.val = i;
