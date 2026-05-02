@@ -3,28 +3,29 @@
  * @return {string}
  */
 const reverseVowels = function (s) {
-  const vowels = new Set(["a", "e", "i", "o", "u"]);
-  const identifiedVowels = new Map();
+  const pattern = new RegExp("[aeiouAEIOU]");
+  let left = 0,
+    right = s.length - 1;
 
-  for (let i = 0; i < s.length; i++) {
-    if (vowels.has(s[i].toLocaleLowerCase())) identifiedVowels.set(i, s[i]);
-  }
+  let _s = Array.from(s);
 
-  const reversedVowels = Array.from(identifiedVowels)
-    .map((entry) => entry[1])
-    .reverse();
+  while (left < right) {
+    if (pattern.test(s[left])) {
+      if (pattern.test(s[right])) {
+        let aux = _s[right];
+        _s[right] = _s[left];
+        _s[left] = aux;
 
-  let _s = "";
-  for (let i = 0; i < s.length; i++) {
-    if (vowels.has(s[i].toLocaleLowerCase())) {
-      _s += reversedVowels[0];
-      reversedVowels.shift();
+        left++;
+      }
+
+      right--;
     } else {
-      _s += s[i];
+      left++;
     }
   }
 
-  return _s;
+  return _s.join("");
 };
 
 console.log(reverseVowels("IceCreAm"));
