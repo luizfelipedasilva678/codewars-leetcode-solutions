@@ -9,8 +9,7 @@ const isHappy = function (n) {
   while (aux !== 1) {
     const sum = String(aux)
       .split("")
-      .map(Number)
-      .map((n) => Math.pow(n, 2))
+      .map((n) => Math.pow(+n, 2))
       .reduce((prev, acc) => prev + acc, 0);
 
     if (seen.has(sum)) {
