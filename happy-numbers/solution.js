@@ -7,7 +7,6 @@ const isHappy = function (n) {
 
   let aux = n;
   while (aux !== 1) {
-    console.log(seen);
     const sum = String(aux)
       .split("")
       .map(Number)
